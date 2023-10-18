@@ -14,6 +14,12 @@ npm install
 npm run test
 ```
 
+## Сборка
+
+```bash
+npm run build
+```
+
 ## Запуск проекта
 
 ```bash
