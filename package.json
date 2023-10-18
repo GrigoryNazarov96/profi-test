@@ -10,7 +10,7 @@
     "dev": "tsc --watch & nodemon dist",
     "test": "jest --runInBand --detectOpenHandles"
   },
-  "author": "Nazarov Grigory",
+  "author": "@nzrvg",
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.20",
