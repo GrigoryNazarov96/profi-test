@@ -4,8 +4,10 @@
   "description": "\"URL shortner API\"",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "dev": "nodemon - exec 'ts-node' src/index.ts",
+    "build": "npm run tsc",
+    "tsc": "tsc -p tsconfig.json",
+    "start": "node dist",
+    "dev": "tsc --watch & nodemon dist",
     "test": "jest --runInBand --detectOpenHandles"
   },
   "author": "Nazarov Grigory",

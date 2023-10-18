@@ -17,5 +17,5 @@ npm run test
 ## Запуск проекта
 
 ```bash
-npm run dev
+npm start
 ```
