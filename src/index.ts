@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import CONSTANTS from "./constants";
 import mongoose from "mongoose";
 import router from "./routes/url.route";
-import cors from "cors";
 
 //DB CONNECTION
 mongoose.Promise = global.Promise;
@@ -14,8 +13,6 @@ export const app = express();
 
 //Middlewares
 app.use(bodyParser.json());
-app.use(cors({ origin: "*" }));
-
 app.use("/", router);
 
 export const server = app.listen(CONSTANTS.PORT, () => {
