@@ -4,8 +4,8 @@ import { ERROR } from "../constants";
 import generateRandomSequence from "../utils/random_url_generator";
 import isValidURL from "../utils/url_validator";
 
-const findRecordByOriginalUrl = async (originalUrl: string): Promise<IUrlShorten | null> => {
-  return await UrlShorten.findOne({ originalUrl });
+const findRecord = async (originalUrl: string, shortUrl: string): Promise<IUrlShorten | null> => {
+  return await UrlShorten.findOne({ originalUrl, shortUrl });
 };
 
 const findRecordByShortUrl = async (shortUrl: string): Promise<IUrlShorten | null> => {
@@ -21,14 +21,14 @@ export const createShortenedURL = async (req: Request, res: Response): Promise<v
   const customUrl: string | undefined = req.body?.customUrl;
   const originalUrl: string = req.body.originalUrl;
 
-  const shortUrl: string = customUrl ?? generateRandomSequence();
   let record: IUrlShorten | null;
   try {
     if (!isValidURL(originalUrl)) {
       throw new Error("Oops! You've provided not valid URL, check the input and try again");
     }
+    const shortUrl: string = customUrl ?? generateRandomSequence();
     //check existence
-    record = await findRecordByOriginalUrl(originalUrl);
+    record = await findRecord(originalUrl, shortUrl);
     //if doesn'f exists create one
     if (!record) {
       record = await createRecord(originalUrl, shortUrl);
@@ -38,9 +38,9 @@ export const createShortenedURL = async (req: Request, res: Response): Promise<v
     if (e.code === ERROR.duplicate && customUrl) {
       res.status(400).send({ error: "Oops! This custom URL already exists, pick another one" });
     } else if (e.code === ERROR.duplicate && !customUrl) {
-      res.status(400).send({ error: "Oops! Eternal error, try again" });
+      res.status(500).send({ error: "Oops! Internal error, try again" });
     } else {
-      res.status(400).send({ error: e.message });
+      res.status(500).send({ error: e.message });
     }
   }
 };
