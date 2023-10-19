@@ -31,21 +31,25 @@
         border-width: 2px;
         width: 100%;
       }
-      .button {
+      .generate-button {
         background-color: crimson;
         color: white;
         border: none;
-        border-radius: 3%;
         margin-top: 20px;
         height: 40px;
         width: 100px;
+      }
+      .copy-button {
+        background-color: lightgray;
+        color: black;
+        border: none;
       }
       .link-container {
         display: none;
         margin-top: 30px;
         text-align: center;
       }
-      .error-container {
+      .message-container {
         display: none;
         margin-top: 20px;
         color: red;
@@ -60,11 +64,12 @@
         <input id="inputLink" class="input" type="text"></input>
         <label for="inputCustom" class="label">Insert your custom suffix here (Optional)</label>
         <input id="inputCustom" class="input" type="text"></input>
-        <button id="generateButton" class="button">Generate</button>
+        <button id="generateButton" class="generate-button">Generate</button>
         <div id="linkContainer" class="link-container">
           <p>Shortened URL: <a id="shortenedLink" href=""></a></p>
+          <button id="copyButton" class="copy-button">Copy to clipboard</button>
         </div>
-        <div id="errorContainer" class="error-container"></div>
+        <div id="messageContainer" class="message-container"></div>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
