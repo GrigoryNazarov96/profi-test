@@ -4,18 +4,7 @@ import { ERROR } from "../constants";
 import generateRandomSequence from "../utils/random_url_generator";
 import isValidURL from "../utils/url_validator";
 import generateProperURL from "../utils/proper_url_generator";
-
-const findRecord = async (originalLink: string, seq: string): Promise<IUrlShorten | null> => {
-  return await Url.findOne({ originalLink, seq });
-};
-
-const findRecordBySeq = async (seq: string): Promise<IUrlShorten | null> => {
-  return await Url.findOne({ seq });
-};
-
-const createRecord = async (originalLink: string, seq: string): Promise<IUrlShorten> => {
-  return await Url.create({ originalLink, seq });
-};
+import { findRecord, createRecord, findRecordBySeq } from "../utils/handle_db_requests";
 
 export const createShortenedURL = async (req: Request, res: Response): Promise<void> => {
   //retrieve the original url and the custom url (if exists) from the request

@@ -1,15 +1,17 @@
 import express from "express";
 import bodyParser from "body-parser";
-import CONSTANTS from "./constants";
 import mongoose from "mongoose";
 import router from "./routes/router";
 import ejs from "ejs";
 import path from "path";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 //DB CONNECTION
 mongoose.Promise = global.Promise;
-mongoose.connect(CONSTANTS.DB_URI, {}).then(() => console.log("Connection to DB established"));
+mongoose.connect(process.env.DB_URI as string, {}).then(() => console.log("Connection to DB established"));
 
 // APP INITIALIZATION
 export const app = express();
@@ -24,6 +26,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/", router);
 
-export const server = app.listen(CONSTANTS.PORT, () => {
-  console.log("Server started on port ", CONSTANTS.PORT);
+export const server = app.listen(process.env.PORT, () => {
+  console.log("Server started on port ", process.env.PORT);
 });
