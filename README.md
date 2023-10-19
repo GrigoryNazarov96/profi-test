@@ -4,7 +4,7 @@
 
 ## Ссылка на работающий проект
 
-[Здесь](https://profi-test.onrender.com/)
+Проект работает[здесь](https://profi-test.onrender.com/)
 
 ## Установка зависимостей
 
