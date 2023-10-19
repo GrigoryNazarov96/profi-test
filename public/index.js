@@ -1,12 +1,12 @@
-const button = document.querySelector("button");
-const input_link = document.querySelector(".input_link");
-const input_custom = document.querySelector(".input_custom");
+const button = document.getElementById("generateButton");
+const inputLink = document.getElementById("inputLink");
+const inputCustom = document.getElementById("inputCustom");
 
 if (button) {
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    const link = input_link.value;
-    const suffix = input_custom.value;
+    const link = inputLink.value;
+    const suffix = inputCustom.value;
     if (suffix) {
       generateShortUrl(link, suffix);
     } else {
@@ -23,9 +23,11 @@ async function generateShortUrl(str, suffix) {
       data: { originalLink: str, customSeq: suffix },
     });
     const shortenedLink = `${res.request.responseURL}${res.data.seq}`;
+    hideError();
     displayShortenedLink(shortenedLink);
   } catch (err) {
-    alert(err.response.data.error);
+    hideShortenedLink();
+    displayError(err.response.data.error);
   }
 }
 
@@ -36,4 +38,20 @@ function displayShortenedLink(link) {
   shortenedLink.href = link;
   shortenedLink.textContent = link;
   linkContainer.style.display = "block";
+}
+
+function displayError(e) {
+  const errorContainer = document.getElementById("errorContainer");
+  errorContainer.textContent = e;
+  errorContainer.style.display = "block";
+}
+
+function hideError() {
+  const errorContainer = document.getElementById("errorContainer");
+  errorContainer.style.display = "none";
+}
+
+function hideShortenedLink() {
+  const linkContainer = document.getElementById("linkContainer");
+  linkContainer.style.display = "none";
 }

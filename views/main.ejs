@@ -9,20 +9,63 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <title>MY APP</title>
+    <title>#SHORTENYOURLINK</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .label {
+        margin: 20px 0 7px;
+        text-align: right;
+      }
+      .input {
+        border-radius: 3%;
+        border-width: 2px;
+        width: 100%;
+      }
+      .button {
+        background-color: crimson;
+        color: white;
+        border: none;
+        border-radius: 3%;
+        margin-top: 20px;
+        height: 40px;
+        width: 100px;
+      }
+      .link-container {
+        display: none;
+        margin-top: 30px;
+        text-align: center;
+      }
+      .error-container {
+        display: none;
+        margin-top: 20px;
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 60vh">
+    <div class="container">
       <h1>#SHORTENYOURLINK</h1>
-      <form style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <label for="input_link" style="margin-top: 20px; margin-bottom: 7px; margin-right: 300px;">Insert your link here</label>
-        <input class="input_link" type= "text" style="border-width: 2px; width: 100%;"></input>
-        <label for="input_custom" style="margin-top: 20px; margin-bottom: 7px; margin-right: 155px;">Insert your custom suffix here (Optional)</label>
-        <input class="input_custom" type= "text" style="border-width: 2px; width: 100%;"></input>
-        <button class="button" style="background-color: crimson; color: white; border: none; border-radius: 3%; margin-top: 20px; height: 40px; width: 100px;">Generate</button>
-        <div id="linkContainer" style="display: none; margin-top: 30px;">
+      <form class="form-container">
+        <label for="inputLink" class="label">Insert your link here</label>
+        <input id="inputLink" class="input" type="text"></input>
+        <label for="inputCustom" class="label">Insert your custom suffix here (Optional)</label>
+        <input id="inputCustom" class="input" type="text"></input>
+        <button id="generateButton" class="button">Generate</button>
+        <div id="linkContainer" class="link-container">
           <p>Shortened URL: <a id="shortenedLink" href=""></a></p>
         </div>
+        <div id="errorContainer" class="error-container"></div>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
