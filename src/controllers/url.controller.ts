@@ -18,7 +18,7 @@ export const createShortenedURL = async (req: Request, res: Response): Promise<v
     }
     if (customSeq && !isValidCustomSeq(customSeq)) {
       throw new Error(
-        "Oops! Custom suffix you provided is not valid, check you've entered only latin letters and numbers"
+        "Oops! Custom suffix you provided is not valid, check you've entered only latin letters, numbers and underscore"
       );
     }
     originalLink = generateProperURL(originalLink);
