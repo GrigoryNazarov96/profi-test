@@ -53,6 +53,7 @@ function displayError(e) {
   const messageContainer = document.getElementById("messageContainer");
   messageContainer.textContent = e;
   messageContainer.style.display = "block";
+  messageContainer.style.color = "red";
 }
 
 function hideError() {
