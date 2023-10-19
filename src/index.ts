@@ -2,8 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import CONSTANTS from "./constants";
 import mongoose from "mongoose";
-import urlRouter from "./routes/url.route";
-import viewRouter from "./routes/view.route";
+import router from "./routes/router";
 import ejs from "ejs";
 import path from "path";
 import cors from "cors";
@@ -23,8 +22,7 @@ app.set("views", path.join(__dirname, "../views"));
 //Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/", viewRouter);
-app.use("/api", urlRouter);
+app.use("/", router);
 
 export const server = app.listen(CONSTANTS.PORT, () => {
   console.log("Server started on port ", CONSTANTS.PORT);

@@ -19,10 +19,10 @@ async function generateShortUrl(str, suffix) {
   try {
     const res = await axios({
       method: "POST",
-      url: "/api",
-      data: { originalUrl: str, customUrl: suffix },
+      url: "/",
+      data: { originalLink: str, customSeq: suffix },
     });
-    alert(`Your shorten link is: ${res.request.responseURL}/${res.data.shortUrl}`);
+    alert(`Your shorten link is: ${res.request.responseURL}${res.data.seq}`);
   } catch (err) {
     alert(err.response.data.error);
   }
