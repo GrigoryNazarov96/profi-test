@@ -15,11 +15,14 @@
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 60vh">
       <h1>#SHORTENYOURLINK</h1>
       <form style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <label style="margin-top: 20px; margin-bottom: 7px; margin-right: 300px;">Insert your link here</label>
-        <input class="input_link" type= "text" style="border-radius: 3%; border-width: 2px; width: 100%;"></input>
-        <label style="margin-top: 20px; margin-bottom: 7px; margin-right: 150px;">Insert your custom suffix here (Optional)</label>
-        <input class="input_custom" type= "text" style="border-radius: 3%; border-width: 2px; width: 100%;"></input>
-        <button class="button" style="background-color: crimson; color: white; border: none; border-radius: 3%; margin-top: 20px;">Generate</button>
+        <label for="input_link" style="margin-top: 20px; margin-bottom: 7px; margin-right: 300px;">Insert your link here</label>
+        <input class="input_link" type= "text" style="border-width: 2px; width: 100%;"></input>
+        <label for="input_custom" style="margin-top: 20px; margin-bottom: 7px; margin-right: 155px;">Insert your custom suffix here (Optional)</label>
+        <input class="input_custom" type= "text" style="border-width: 2px; width: 100%;"></input>
+        <button class="button" style="background-color: crimson; color: white; border: none; border-radius: 3%; margin-top: 20px; height: 40px; width: 100px;">Generate</button>
+        <div id="linkContainer" style="display: none; margin-top: 30px;">
+          <p>Shortened URL: <a id="shortenedLink" href=""></a></p>
+        </div>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

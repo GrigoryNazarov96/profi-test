@@ -22,8 +22,18 @@ async function generateShortUrl(str, suffix) {
       url: "/",
       data: { originalLink: str, customSeq: suffix },
     });
-    alert(`Your shorten link is: ${res.request.responseURL}${res.data.seq}`);
+    const shortenedLink = `${res.request.responseURL}${res.data.seq}`;
+    displayShortenedLink(shortenedLink);
   } catch (err) {
     alert(err.response.data.error);
   }
+}
+
+function displayShortenedLink(link) {
+  const linkContainer = document.getElementById("linkContainer");
+  const shortenedLink = document.getElementById("shortenedLink");
+
+  shortenedLink.href = link;
+  shortenedLink.textContent = link;
+  linkContainer.style.display = "block";
 }
