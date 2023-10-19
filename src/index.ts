@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import router from "./routes/router";
 import ejs from "ejs";
 import path from "path";
-import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -22,7 +21,6 @@ app.set("view engine", ejs);
 app.set("views", path.join(__dirname, "../views"));
 
 //Middlewares
-app.use(cors());
 app.use(bodyParser.json());
 app.use("/", router);
 
