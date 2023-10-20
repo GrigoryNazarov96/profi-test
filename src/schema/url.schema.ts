@@ -1,16 +1,16 @@
 import mongoose, { Document } from "mongoose";
 
 export interface IUrlShorten extends Document {
-  originalUrl: string;
-  shortUrl: string;
+  originalLink: string;
+  seq: string;
 }
 
 const urlSchema = new mongoose.Schema({
-  originalUrl: {
+  originalLink: {
     type: String,
     required: true,
   },
-  shortUrl: {
+  seq: {
     type: String,
     required: true,
     unique: true,
