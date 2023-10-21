@@ -18,6 +18,12 @@
         justify-content: center;
         min-height: 60vh;
       }
+      .sub-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
       .form-container {
         display: flex;
         flex-direction: column;
@@ -52,6 +58,7 @@
       .message-container {
         display: none;
         margin-top: 20px;
+        text-align: center;
       }
     </style>
   </head>
@@ -64,13 +71,14 @@
         <label for="inputCustom" class="label">Insert your custom suffix here (Optional)</label>
         <input id="inputCustom" class="input" type="text"></input>
         <button id="generateButton" class="generate-button">Generate</button>
-        <div id="linkContainer" class="link-container">
-          <p>Shortened URL: <a id="shortenedLink" href=""></a></p>
-          <button id="copyButton" class="copy-button">Copy to clipboard</button>
-        </div>
-        <div id="messageContainer" class="message-container"></div>
       </form>
     </div>
+    <div class="sub-container"></div>
+    <div id="linkContainer" class="link-container">
+      <p>Shortened URL: <a id="shortenedLink" href=""></a></p>
+      <button id="copyButton" class="copy-button">Copy to clipboard</button>
+    </div>
+    <div id="messageContainer" class="message-container"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="index.js"></script>
     <script
