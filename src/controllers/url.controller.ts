@@ -5,6 +5,7 @@ import generateRandomSequence from "../utils/random_url_generator";
 import isValidURL from "../utils/url_validator";
 import generateProperURL from "../utils/proper_url_generator";
 import { findRecord, createRecord, findRecordBySeq } from "../utils/handle_db_requests";
+import isValidCustomSeq from "../utils/custom_seq_validator";
 
 export const createShortenedURL = async (req: Request, res: Response): Promise<void> => {
   //retrieve the original url and the custom url (if exists) from the request
@@ -14,6 +15,11 @@ export const createShortenedURL = async (req: Request, res: Response): Promise<v
   try {
     if (!isValidURL(originalLink)) {
       throw new Error("Oops! You've provided not valid URL, check the input and try again");
+    }
+    if (customSeq && !isValidCustomSeq(customSeq)) {
+      throw new Error(
+        "Oops! Custom suffix you provided is not valid, check you've entered only latin letters and numbers"
+      );
     }
     originalLink = generateProperURL(originalLink);
     const seq: string = customSeq ?? generateRandomSequence();
