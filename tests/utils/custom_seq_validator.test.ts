@@ -1,6 +1,6 @@
 import isValidCustomSeq from "../../src/utils/custom_seq_validator";
 
-test("isValidCustomSeq() returns true in case of latin letters and numbers", () => {
+test("isValidCustomSeq() returns true in case of latin letters, numbers and underscore", () => {
   const str = "71823jjaskdlaGAYjasdskmndnjs0009091123123";
   const result = isValidCustomSeq(str);
   expect(result).toBe(true);
