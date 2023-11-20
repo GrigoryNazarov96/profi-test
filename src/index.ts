@@ -8,19 +8,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//DB CONNECTION
+// DB CONNECTION
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URI as string, {}).then(() => console.log("Connection to DB established"));
 
-// APP INITIALIZATION
+// APP INIT
 export const app = express();
 
-//SRR init
+//VIEW ENGINE AND ROUTE INIT
 app.use(express.static(path.join(__dirname, "../public")));
 app.set("view engine", ejs);
 app.set("views", path.join(__dirname, "../views"));
 
-//Middlewares
+// MIDDLEWARE INIT
 app.use(bodyParser.json());
 app.use("/", router);
 
